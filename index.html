@@ -1,5 +1,9 @@
 {% extends "_base.html" %}
 
+{% block css %}
+<link rel="stylesheet" type="text/css" href="style.css"/>
+{% endblock %}
+
 {% block nav %}
 {% endblock %}
 
@@ -15,9 +19,11 @@
 <div class="container">
 
   {% for curso in cursos %}
-  <p><a href="#" data-toggle="modal" data-target="#{{curso.id}}"> 
-  {{curso.name}} </a></p>
+  <p class="curso"><a href="#" data-toggle="modal" data-target="#{{curso.id}}"> 
+  <strong>{{curso.name}}</strong></a> | {{curso.profesor}} | {{curso.horario}}</p>
   {% endfor %}
+  <hr/>
+  <p>{{footer|safe}}</p>
 </div>
 
 {% for curso in cursos %}
@@ -30,7 +36,7 @@
       </div>
       <div class="modal-body">
         <p><strong>Horario:</strong> {{curso.horario}}</p>
-        <p><strong>Requisito:</strong> {{curso.requisito}}</p>
+        <p><strong>Pre-requisito:</strong> {{curso.requisito}}</p>
         <p><strong>Profesor:</strong> {{curso.profesor}}</p>
         <p><strong>Descripción del curso:</strong> {{curso.descripcion_clase}}</p>
         <p><strong>Clave: </strong> {{curso.clave}}</p>
@@ -50,7 +56,9 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
+
 {% endfor %}
+
 
 
 {% endblock content %}
