@@ -1,12 +1,45 @@
 {% extends "_base.html" %}
 
+{% block nav %}
+{% endblock %}
+
 {% block content %}
-<div class="container">
-  <div class="jumbotron">
-    <h1>Welcome to your new project!</h1>
-    <p>Replace this message with your own content in <code>{{ PROJECT_PATH }}/index.html</code>.</p>
-    <p>Learn more on the <a href="_example.html">example page</a>.</p>
-  </div>
+<div class="jumbotron">
+  <div class="container">  
+    <h1>Periodismo Ibero</h1>
+    <p>{{intro}}</p>
+    <p>{{intro2}}</p>
+  </div>  
 </div>
+
+<div class="container">
+
+  {% for curso in cursos %}
+  <p><a href="#" data-toggle="modal" data-target="#{{curso.id}}"> 
+  {{curso.name}} </a></p>
+  {% endfor %}
+</div>
+
+{% for curso in cursos %}
+<div class="modal fade" id="{{curso.id}}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{curso.name}}</h4>
+      </div>
+      <div class="modal-body">
+        <p><strong>Horario:</strong> {{curso.horario}}</p>
+        <p><strong>Requisito:</strong> {{curso.requisito}}</p>
+        <p><strong>Profesor:</strong> {{curso.profesor}}</p>
+        <p><strong>Descripción del curso:</strong> {{curso.descripcion_clase}}</p>
+        <p><strong>Clave: </strong> {{curso.clave}}</p>
+        <p><strong>{{curso.profesor}}</strong> {{curso.semblanza_prof}}</p>  
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+{% endfor %}
+
 {% endblock content %}
 
