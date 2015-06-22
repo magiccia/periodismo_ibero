@@ -34,12 +34,24 @@
         <p><strong>Profesor:</strong> {{curso.profesor}}</p>
         <p><strong>Descripción del curso:</strong> {{curso.descripcion_clase}}</p>
         <p><strong>Clave: </strong> {{curso.clave}}</p>
-        <p><strong>{{curso.profesor}}</strong> {{curso.semblanza_prof}}</p>  
+        
+        <div class="row">
+          <div class="col-xs-8 col-md-10">
+            <p><strong>{{curso.profesor}}</strong> {{curso.semblanza_prof}}</p>
+          </div>
+          <div class="col-xs-4 col-md-2">
+            {% if curso.img %} 
+            <img src="img/{{curso.img}}" class="img-responsive"/>   
+            {% endif %}
+          </div>
+        </div>
+          
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
 {% endfor %}
+
 
 {% endblock content %}
 
